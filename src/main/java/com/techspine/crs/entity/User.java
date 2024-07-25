@@ -1,6 +1,7 @@
 package com.techspine.crs.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.techspine.crs.enums.UserRole;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -30,13 +31,14 @@ public class User {
     @Column(name = "profileImg")
     private String profileImg;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "role")
-    private String role;
+    private UserRole role;
 
     public User() {
     }
 
-    public User(int userId, String firstName, String lastName, String email, String password, String profileImg, String role) {
+    public User(int userId, String firstName, String lastName, String email, String password, String profileImg, UserRole role) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -94,11 +96,11 @@ public class User {
         this.profileImg = profileImg;
     }
 
-    public String getRole() {
+    public UserRole getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(UserRole role) {
         this.role = role;
     }
 }
@@ -126,4 +128,5 @@ public class User {
 //    @ElementCollection
 //    @CollectionTable(name = "payment_information" , joinColumns = @JoinColumn(name = "user_id"))
 //    private List<PaymentInformation> paymentInformation = new ArrayList<>();
+
 
