@@ -1,0 +1,28 @@
+#logging.level.org.hibernate.orm.jdbc.bind=trace
+
+
+server:
+  port: 3333
+
+spring:
+  main:
+    banner-mode: off
+  datasource:
+    url: jdbc:mysql://localhost:3306/crs
+    username: springstudent
+    password: springstudent
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    open-in-view: true
+
+
+logging:
+  level:
+    root: warn
+    sql: trace
+
+
+
