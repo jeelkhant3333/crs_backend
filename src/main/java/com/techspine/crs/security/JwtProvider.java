@@ -19,16 +19,14 @@ public class JwtProvider {
 
         return Jwts.builder()
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(new Date().getTime() + 846000000))
+                .setExpiration(new Date(new Date().getTime() + 2592000000L))
                 .claim("email", authentication.getName())
                 .signWith(key).compact();
     }
 
     public String getEmailFromJwt(String jwt){
         jwt = jwt.substring(7);
-
         Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(jwt).getBody();
-
         return (String) claims.get("email");
     }
 }

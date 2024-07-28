@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -23,11 +22,11 @@ public class CustomUserServiceImpl implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        User user = userRepository.findByEmail(username);
+        User user = userRepository.findByEmail(email);
         if (user == null){
-            throw new UsernameNotFoundException("User not found for email " + username);
+            throw new UsernameNotFoundException("User not found for email " + email);
         }
 
         List<GrantedAuthority> authorities = new ArrayList<>();

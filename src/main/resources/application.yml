@@ -13,10 +13,10 @@ spring:
     password: springstudent
   jpa:
     show-sql: true
-    generate-ddl: true
     hibernate:
       ddl-auto: update
     open-in-view: true
+
 
 
 logging:

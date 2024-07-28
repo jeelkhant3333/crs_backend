@@ -28,7 +28,7 @@ public class User {
     @Column(name = "password")
     private String password;
     @Lob
-    @Column(name = "profileImg")
+    @Column(name = "profileImg",columnDefinition = "LONGTEXT")
     private String profileImg;
 
     @Enumerated(EnumType.STRING)
