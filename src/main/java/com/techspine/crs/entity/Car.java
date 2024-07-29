@@ -30,8 +30,9 @@ public class Car {
     private String model;
     private Integer topSpeed;
     private String transmission;
-    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Booking> bookings = new ArrayList<>();
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name = "car_id") // this will add a foreign key column in the Booking table
+//    private List<Booking> bookings = new ArrayList<>();
     @ElementCollection
     @CollectionTable(name = "car_images", joinColumns = @JoinColumn(name = "car_id"))
     @Column(name = "image",columnDefinition = "LONGTEXT")
@@ -56,7 +57,7 @@ public class Car {
         this.model = model;
         this.topSpeed = topSpeed;
         this.transmission = transmission;
-        this.bookings = bookings;
+//        this.bookings = bookings;
         this.images = images;
         this.isBooked = isBooked;
     }
@@ -173,13 +174,13 @@ public class Car {
         this.images = images;
     }
 
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
-    }
+//    public List<Booking> getBookings() {
+//        return bookings;
+//    }
+//
+//    public void setBookings(List<Booking> bookings) {
+//        this.bookings = bookings;
+//    }
 
     public boolean isBooked() {
         return isBooked;

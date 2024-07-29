@@ -1,28 +1,31 @@
 package com.techspine.crs.entity;
 
 
+import com.techspine.crs.enums.Status;
 
 public class PaymentDetails {
 
     private String paymentMethod;
-    private String status;
+    private Status paymentStatus;
     private String paymentId;
     private String razorpayPaymentLinkId;
     private String razorpayPaymentLinkReferenceId;
     private String razorpayPaymentLinkStatus;
     private String razorpayPaymentId;
+    private double totalPayment;
 
     public PaymentDetails() {
     }
 
-    public PaymentDetails(String paymentMethod, String status, String paymentId, String razorpayPaymentLinkId, String razorpayPaymentLinkReferenceId, String razorpayPaymentLinkStatus, String razorpayPaymentId) {
+    public PaymentDetails(String paymentMethod, Status paymentStatus, String paymentId, String razorpayPaymentLinkId, String razorpayPaymentLinkReferenceId, String razorpayPaymentLinkStatus, String razorpayPaymentId, double totalPayment) {
         this.paymentMethod = paymentMethod;
-        this.status = status;
+        this.paymentStatus = paymentStatus;
         this.paymentId = paymentId;
         this.razorpayPaymentLinkId = razorpayPaymentLinkId;
         this.razorpayPaymentLinkReferenceId = razorpayPaymentLinkReferenceId;
         this.razorpayPaymentLinkStatus = razorpayPaymentLinkStatus;
         this.razorpayPaymentId = razorpayPaymentId;
+        this.totalPayment = totalPayment;
     }
 
     public String getPaymentMethod() {
@@ -33,12 +36,12 @@ public class PaymentDetails {
         this.paymentMethod = paymentMethod;
     }
 
-    public String getStatus() {
-        return status;
+    public Status getPaymentStatus() {
+        return paymentStatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setPaymentStatus(Status status) {
+        this.paymentStatus = status;
     }
 
     public String getPaymentId() {
@@ -79,5 +82,13 @@ public class PaymentDetails {
 
     public void setRazorpayPaymentId(String razorpayPaymentId) {
         this.razorpayPaymentId = razorpayPaymentId;
+    }
+
+    public double getTotalPayment() {
+        return totalPayment;
+    }
+
+    public void setTotalPayment(double totalPayment) {
+        this.totalPayment = totalPayment;
     }
 }
