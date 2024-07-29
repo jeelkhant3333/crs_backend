@@ -1,5 +1,6 @@
 package com.techspine.crs.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -14,8 +15,9 @@ public class Car {
     @Column(name = "carId")
     private int carId;
 
-    @OneToOne
-    @JoinColumn(name="user_id")
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
     private String name;
     private String company;
@@ -32,7 +34,8 @@ public class Car {
     private List<Booking> bookings = new ArrayList<>();
     @ElementCollection
     @CollectionTable(name = "car_images", joinColumns = @JoinColumn(name = "car_id"))
-    @Column(name = "image")
+    @Column(name = "image",columnDefinition = "LONGTEXT")
+    @Lob
     private List<String> images = new ArrayList<>();
     private boolean isBooked;
 

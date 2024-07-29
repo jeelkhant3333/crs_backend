@@ -1,10 +1,8 @@
 package com.techspine.crs.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.techspine.crs.enums.UserRole;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,6 +28,9 @@ public class User {
     @Lob
     @Column(name = "profileImg",columnDefinition = "LONGTEXT")
     private String profileImg;
+    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
+    @Column(name = "cars")
+    private List<Car> cars;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
@@ -38,7 +39,7 @@ public class User {
     public User() {
     }
 
-    public User(int userId, String firstName, String lastName, String email, String password, String profileImg, UserRole role) {
+    public User(int userId, String firstName, String lastName, String email, String password, String profileImg, UserRole role, List<Car> cars) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -46,8 +47,8 @@ public class User {
         this.password = password;
         this.profileImg = profileImg;
         this.role = role;
+        this.cars = cars;
     }
-
     public int getUserId() {
         return userId;
     }
@@ -102,6 +103,14 @@ public class User {
 
     public void setRole(UserRole role) {
         this.role = role;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
     }
 }
 
